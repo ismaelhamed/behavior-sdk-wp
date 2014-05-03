@@ -9,7 +9,7 @@ namespace Microsoft.Xaml.Interactivity
             get;
         }
 
-        void Attach(DependencyObject obj);
+        void Attach(DependencyObject associatedObject);
         void Detach();
     }
 }

@@ -41,6 +41,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Phone" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
     <Reference Include="System.Core" />
@@ -49,8 +50,21 @@
     <Reference Include="mscorlib.extensions" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\CallMethodAction.cs" />
+    <Compile Include="Core\ChangePropertyAction.cs" />
+    <Compile Include="Core\ComparisonConditionType.cs" />
+    <Compile Include="Core\DataBindingHelper.cs" />
+    <Compile Include="Core\DataTriggerBehavior.cs" />
     <Compile Include="Core\EventTriggerBehavior.cs" />
+    <Compile Include="Core\GoToStateAction.cs" />
     <Compile Include="Core\InvokeCommandAction.cs" />
+    <Compile Include="Core\NavigateToPageAction.cs" />
+    <Compile Include="Core\TypeConverterHelper.cs" />
+    <Compile Include="ExceptionStringTable.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExceptionStringTable.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +72,14 @@
       <Project>{AF84BDC0-E649-4034-A3AA-DEADDAEC5108}</Project>
       <Name>Microsoft.Xaml.Interactivity</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ExceptionStringTable.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <CustomToolNamespace>Microsoft.Xaml.Interactions</CustomToolNamespace>
+      <LastGenOutput>ExceptionStringTable.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />

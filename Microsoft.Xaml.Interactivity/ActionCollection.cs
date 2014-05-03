@@ -29,9 +29,8 @@ namespace Microsoft.Xaml.Interactivity
                     var action = this[eventArgs.NewStartingIndex] as IAction;
                     if (action != null)
                     {
-                    
+                        ActionCollection.VerifyType(this[eventArgs.NewStartingIndex]);
                     }
-                    ActionCollection.VerifyType(this[eventArgs.NewStartingIndex]);
                 }
                     break;
             }

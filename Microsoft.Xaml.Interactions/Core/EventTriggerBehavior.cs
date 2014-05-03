@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Globalization;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Markup;
@@ -8,8 +9,11 @@ using Microsoft.Xaml.Interactivity;
 
 namespace Microsoft.Xaml.Interactions.Core
 {
+    /// <summary>
+    /// Represents a behavior that listens for a specified event on its source and executes its actions when that event is fired.
+    /// </summary>
     [ContentProperty("Actions")]
-    public sealed class EventTriggerBehavior : DependencyObject, IBehavior
+    public class EventTriggerBehavior : DependencyObject, IBehavior
     {
         private object resolvedSource;
         private bool isLoadedEventRegistered;
@@ -19,6 +23,9 @@ namespace Microsoft.Xaml.Interactions.Core
         public readonly static DependencyProperty EventNameProperty;
         public readonly static DependencyProperty SourceObjectProperty;
 
+        /// <summary>
+        /// Gets the collection of actions associated with the behavior. This is a dependency property.
+        /// </summary>
         public ActionCollection Actions
         {
             get
@@ -33,18 +40,27 @@ namespace Microsoft.Xaml.Interactions.Core
             }
         }
 
+        /// <summary>
+        /// Gets the DependencyObject to which the IBehavior will be attached.
+        /// </summary>
         public DependencyObject AssociatedObject
         {
             get; 
             private set;
         }
 
+        /// <summary>
+        /// Gets or sets the name of the event to listen for. This is a dependency property.
+        /// </summary>
         public string EventName
         {
             get { return (string)GetValue(EventTriggerBehavior.EventNameProperty); }
             set { SetValue(EventTriggerBehavior.EventNameProperty, value); }
         }
 
+        /// <summary>
+        /// Gets the SourceObject dependency property.
+        /// </summary>
         public object SourceObject
         {
             get { return GetValue(EventTriggerBehavior.SourceObjectProperty); }
@@ -58,20 +74,30 @@ namespace Microsoft.Xaml.Interactions.Core
             EventTriggerBehavior.SourceObjectProperty = DependencyProperty.Register("SourceObject", typeof(object), typeof(EventTriggerBehavior), new PropertyMetadata(null, EventTriggerBehavior.OnSourceObjectChanged));
         }
 
-        public void Attach(DependencyObject obj)
+        /// <summary>
+        /// Attaches to the specified object.
+        /// </summary>
+        /// <param name="associatedObject">The DependencyObject to which the IBehavior will be attached.</param>
+        public void Attach(DependencyObject associatedObject)
         {
-            if (AssociatedObject == obj || DesignerProperties.IsInDesignTool)
+            if (AssociatedObject == associatedObject || DesignerProperties.IsInDesignTool)
                 return;
    
             if (AssociatedObject != null)
             {
-                throw new InvalidOperationException("CannotAttachBehaviorMultipleTimesExceptionMessage");
+                var currentCulture = CultureInfo.CurrentCulture;
+                var cannotAttachBehaviorMultipleTimesExceptionMessage = ExceptionStringTable.CannotAttachBehaviorMultipleTimesExceptionMessage;
+                var objArray = new object[] { associatedObject, AssociatedObject };
+                throw new InvalidOperationException(String.Format(currentCulture, cannotAttachBehaviorMultipleTimesExceptionMessage, objArray));
             }
 
-            AssociatedObject = obj;
+            AssociatedObject = associatedObject;
             SetResolvedSource(ComputeResolvedSource());
         }
 
+        /// <summary>
+        /// Detaches this instance from its associated object.
+        /// </summary>
         public void Detach()
         {
             SetResolvedSource(null);
@@ -129,13 +155,13 @@ namespace Microsoft.Xaml.Interactions.Core
                 return;
 
             if (resolvedSource != null)
-                UnregisterEvent(EventName);
+                UnregisterEvent(GetEventName());
 
             resolvedSource = newSource;
 
             if (resolvedSource != null)
             {
-                RegisterEvent(EventName);
+                RegisterEvent(GetEventName());
             }
         }
 
@@ -160,7 +186,7 @@ namespace Microsoft.Xaml.Interactions.Core
                 return;
             }
 
-            var runtimeEvent = resolvedSource.GetType().GetEvent(EventName);
+            var runtimeEvent = resolvedSource.GetType().GetEvent(eventName);
             if (runtimeEvent == null)
             {
                 throw new ArgumentException("CannotFindEventNameExceptionMessage");
@@ -168,6 +194,14 @@ namespace Microsoft.Xaml.Interactions.Core
 
             eventHandlerMethodInfo = typeof(EventTriggerBehavior).GetMethod("OnEvent", BindingFlags.Instance | BindingFlags.NonPublic);
             runtimeEvent.AddEventHandler(resolvedSource, Delegate.CreateDelegate(runtimeEvent.EventHandlerType, this, eventHandlerMethodInfo));
+        }
+
+        /// <summary>
+        /// Specifies the name of the Event this EventTriggerBase is listening for.
+        /// </summary>
+        protected virtual string GetEventName()
+        {
+            return EventName;
         }
 
         private void UnregisterEvent(string eventName)
