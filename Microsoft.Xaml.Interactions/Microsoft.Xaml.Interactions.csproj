@@ -65,6 +65,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ExceptionStringTable.resx</DependentUpon>
     </Compile>
+    <Compile Include="Media\ControlStoryboardAction.cs" />
+    <Compile Include="Media\ControlStoryboardOption.cs" />
+    <Compile Include="Media\PlaySoundAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
