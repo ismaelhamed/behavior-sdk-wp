@@ -21,7 +21,6 @@ The list of Behaviors and Actions contained in the Behavior SDK is as follows:
 - **DataTriggerBehavior:** Represents a behavior that performs actions when the bound data meets a specified condition.
 - **EventTriggerBehavior:** Represents a behavior that listens for a specified event on its source and executes its actions when that event is fired.
 - **GoToStateAction:** Represents an action that will transition a FrameworkElement to a specified VisualState when executed.
-- **IncrementalUpdateBehavior:** Represents a behavior that allows incremental updating of ListView and GridView contents to support faster updating. By attaching this behavior to elements in the ItemTemplate used by these views, some of the updates can be deferred until there is render time available, resulting in a smoother experience.
 - **InvokeCommandAction:** Executes a specified ICommand when invoked.
 - **NavigateToPageAction:** Represents an action that switches the current visual to the specified Page.
 
