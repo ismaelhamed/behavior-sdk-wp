@@ -122,7 +122,7 @@ namespace Microsoft.Xaml.Interactions.Core
 
         private void OnEvent(object sender, object eventArgs)
         {
-            Interaction.ExecuteActions(resolvedSource, Actions, eventArgs);
+            Interaction.ExecuteActions(AssociatedObject, Actions, eventArgs);
         }
 
         private static void OnEventNameChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs args)

@@ -25,13 +25,11 @@ namespace Microsoft.Xaml.Interactivity
                     break;
                 case NotifyCollectionChangedAction.Replace:
                 case NotifyCollectionChangedAction.Add:
-                {
                     var action = this[eventArgs.NewStartingIndex] as IAction;
                     if (action != null)
                     {
                         ActionCollection.VerifyType(this[eventArgs.NewStartingIndex]);
                     }
-                }
                     break;
             }
         }

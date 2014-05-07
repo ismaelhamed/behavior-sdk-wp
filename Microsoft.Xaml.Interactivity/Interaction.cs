@@ -62,9 +62,9 @@ namespace Microsoft.Xaml.Interactivity
             }
         }
         
-        public static IEnumerable<Object> ExecuteActions(Object sender, ActionCollection actions, Object parameter)
+        public static IEnumerable<Object> ExecuteActions(object sender, ActionCollection actions, object parameter)
         {
-            var objs = new List<Object>();
+            var objs = new List<object>();
             if (actions == null || DesignerProperties.IsInDesignTool)
             {
                 return objs;
