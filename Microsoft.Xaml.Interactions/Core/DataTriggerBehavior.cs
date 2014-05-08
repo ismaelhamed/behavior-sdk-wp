@@ -97,6 +97,7 @@ namespace Microsoft.Xaml.Interactions.Core
                 var objArray = new object[] { associatedObject, AssociatedObject };
                 throw new InvalidOperationException(string.Format(currentCulture, cannotAttachBehaviorMultipleTimesExceptionMessage, objArray));
             }
+
             AssociatedObject = associatedObject;
         }
 
