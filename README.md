@@ -1,5 +1,6 @@
-Behavior SDK (XAML) for Windows Phone (Silverlight)
-===================================================
+# Behavior SDK (XAML) for Windows Phone (Silverlight)
+
+[![Build status](https://ci.appveyor.com/api/projects/status/yfct5fihd1i7cp5c)](https://ci.appveyor.com/project/ismaelhamed/behavior-sdk-wp)
 
 The Behaviors Software Development Kit (XAML) provides information about behaviors, which are pieces of packaged code that you can reuse to add interactivity to your apps. To incorporate a behavior from the SDK, you drag it onto any object and then changing its properties to better suit your application.
 
