@@ -1,5 +1,4 @@
-Behavior SDK (XAML) for Windows Phone (Silverlight)
-===================================================
+# Behavior SDK (XAML) for Windows Phone (Silverlight)
 
 [![Build status](https://ci.appveyor.com/api/projects/status/yfct5fihd1i7cp5c)](https://ci.appveyor.com/project/ismaelhamed/behavior-sdk-wp)
 
