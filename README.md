@@ -36,3 +36,7 @@ This is a port of the Microsoft [Behavior SDK for Visual Studio 2013](http://msd
 
 
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ismaelhamed/behavior-sdk-wp/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
