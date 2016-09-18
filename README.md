@@ -33,10 +33,3 @@ The list of Behaviors and Actions contained in the Behavior SDK is as follows:
 **DISCLAIMER!**
 
 This is a port of the Microsoft [Behavior SDK for Visual Studio 2013](http://msdn.microsoft.com/en-us/library/dn457340.aspx), and is provided to you "AS-IS".
-
-
-
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ismaelhamed/behavior-sdk-wp/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
